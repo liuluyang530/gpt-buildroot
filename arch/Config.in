@@ -78,6 +78,15 @@ config BR2_aarch64_be
 	  http://www.arm.com/products/processors/instruction-set-architectures/armv8-architecture.php
 	  http://en.wikipedia.org/wiki/ARM
 
+config BR2_gpt
+	bool "gpt (little endian)"
+	select BR2_ARCH_IS_64
+	select BR2_ARCH_HAS_MMU_MANDATORY
+	help
+	  gpt is a 64-bit architecture developed by GPT Holdings.
+	  http://www.gpt.com
+	  http://en.wikipedia.org/wiki/gpt
+
 config BR2_csky
 	bool "csky"
 	select BR2_ARCH_HAS_NO_TOOLCHAIN_BUILDROOT
@@ -447,6 +456,10 @@ endif
 
 if BR2_xtensa
 source "arch/Config.in.xtensa"
+endif
+
+if BR2_gpt
+source "arch/Config.in.gpt"
 endif
 
 endmenu # Target options
