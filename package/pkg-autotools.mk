@@ -32,6 +32,9 @@ define CONFIG_UPDATE
 	for file in config.guess config.sub; do \
 		for i in $$(find $(1) -name $$file); do \
 			cp support/gnuconfig/$$file $$i; \
+			echo ==========================; \
+			echo cp support/gnuconfig/$$file $$i; \
+                        echo ===============================; \
 		done; \
 	done
 endef
@@ -52,6 +55,17 @@ AUTOCONF_AC_CHECK_FILE_VAL = ac_cv_file_$(subst -,_,$(subst /,_,$(subst .,_,$(1)
 define UPDATE_CONFIG_HOOK
 	@$(call MESSAGE,"Updating config.sub and config.guess")
 	$(call CONFIG_UPDATE,$(@D))
+endef
+#
+# Hook to update GPT modified files if there is any
+#
+define UPDATE_GPT_CONFIG_HOOK
+	if [ ! -d "$(PKGDIR)GPT" ]; then	\
+		@$(call MESSAGE,"Updating GPT Configure file");	\
+		ls -al $(PKGDIR)GPT/*;	\
+		cp -rf $(PKGDIR)GPT/configure $($(PKG)_SRCDIR);	\
+		pwd;	\
+	fi
 endef
 
 #
@@ -241,6 +255,7 @@ endif
 endif
 
 $(2)_POST_PATCH_HOOKS += UPDATE_CONFIG_HOOK
+$(2)_POST_PATCH_HOOKS += UPDATE_GPT_CONFIG_HOOK
 
 ifeq ($$($(2)_AUTORECONF),YES)
 

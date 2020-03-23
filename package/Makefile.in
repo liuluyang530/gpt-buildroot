@@ -191,6 +191,13 @@ TARGET_FCFLAGS += -mid-shared-library -mshared-library-id=0
 TARGET_CXXFLAGS += -mid-shared-library -mshared-library-id=0
 endif
 
+ifeq ($(BR2_TOOLCHAIN_EXTERNAL_GCC_9),y)
+TARGET_LDFLAGS += -mno-vpu
+TARGET_CFLAGS += -mno-vpu
+TARGET_FCFLAGS += -mno-vpu
+TARGET_CXXFLAGS += -mno-vpu
+endif
+
 ifeq ($(BR2_TOOLCHAIN_BUILDROOT),y)
 TARGET_CROSS = $(HOST_DIR)/bin/$(GNU_TARGET_NAME)-
 else

@@ -9,6 +9,12 @@ menu "Target packages"
 	source "package/skeleton-init-systemd/Config.in"
 	source "package/skeleton-init-sysv/Config.in"
 
+menu "GPT applications"
+	source "package/fbplay/Config.in"
+	source "package/ffmpeg-gpt/Config.in"
+	source "package/vcaptest/Config.in"
+endmenu
+
 menu "Audio and video applications"
 	source "package/alsa-utils/Config.in"
 	source "package/atest/Config.in"

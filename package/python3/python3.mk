@@ -182,6 +182,17 @@ define HOST_PYTHON3_MAKE_REGEN_IMPORTLIB
 	$(HOST_MAKE_ENV) $(PYTHON3_CONF_ENV) $(MAKE) $(HOST_CONFIGURE_OPTS) -C $(@D) regen-importlib
 	cp $(@D)/Programs/_freeze_importlib $(HOST_DIR)/bin/python-freeze-importlib
 endef
+#
+# GPT modified confifgure
+#
+#
+define PYTHON3_GPT_COPY_OVERLAY
+#	echo "cppppppppppppppppppppppppppppppppppy!!!! = " $(@D)
+	cp $(@D)/configure $(@D)/configure.bak
+#	cp $(@D)/configure  $(BR2_DL_DIR)/../package/python3/overlay/configure
+	cp $(BR2_DL_DIR)/../package/python3/overlay/configure $(@D)
+#	sed -n
+endef
 
 HOST_PYTHON3_PRE_BUILD_HOOKS += HOST_PYTHON3_MAKE_REGEN_IMPORTLIB
 #
@@ -195,9 +206,13 @@ define PYTHON3_MAKE_REGEN_IMPORTLIB
 	$(TARGET_MAKE_ENV) $(PYTHON3_CONF_ENV) $(MAKE) $(TARGET_CONFIGURE_OPTS) -C $(@D) Programs/_freeze_importlib
 	cp $(HOST_DIR)/bin/python-freeze-importlib $(@D)/Programs/_freeze_importlib
 	$(TARGET_MAKE_ENV) $(PYTHON3_CONF_ENV) $(MAKE) $(TARGET_CONFIGURE_OPTS) -C $(@D) regen-importlib
+	sleep 5
 endef
 
-PYTHON3_PRE_BUILD_HOOKS += PYTHON3_MAKE_REGEN_IMPORTLIB
+PYTHON3_PRE_BUILD_HOOKS += PYTHON3_GPT_COPY_OVERLAY
+
+PYTHON3_PRE_BUILD_HOOKS += PYTHON3_MAKE_REGEN_IMPORTLIB 
+
 
 #
 # Remove useless files. In the config/ directory, only the Makefile

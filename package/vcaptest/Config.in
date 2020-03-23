@@ -1,0 +1,6 @@
+menuconfig BR2_PACKAGE_VCAPTEST
+	bool "vcaptest"
+	help
+	  vcaptest is a GPT camera test player.
+
+

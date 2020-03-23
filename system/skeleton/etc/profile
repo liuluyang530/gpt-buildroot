@@ -17,3 +17,6 @@ for i in /etc/profile.d/*.sh ; do
 	fi
 done
 unset i
+
+# add by lyy 2019-04-02, support core dump.
+ulimit -c unlimited
