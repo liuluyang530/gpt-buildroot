@@ -1,0 +1,7 @@
+menuconfig BR2_PACKAGE_FBPLAY
+	bool "fbplay"
+	select BR2_PACKAGE_FFMPEG_GPT
+	help
+	  fbplay is a GPT fream buffer player.
+
+
