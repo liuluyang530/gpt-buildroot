@@ -632,6 +632,11 @@ case $1 in
 				basic_machine=ymp-cray
 				os=unicos
 				;;
+			gpt* | polaris-gpt | polaris | chase-gpt | chase)
+				basic_machine=polaris-gpt
+				os=linux
+		;;
+
 			*)
 				basic_machine=$1
 				os=
@@ -672,8 +677,8 @@ case $basic_machine in
 		cpu=powerpc
 		vendor=apple
 		;;
-	gpt | gpt-buildroot | polaris-gpt | polaris | chase-gpt | chase)
-		cpu=polaris
+	gpt* | polaris-gpt | polaris | chase-gpt | chase)
+		cpu=gp8300
 		vendor=gpt
 		;;
 
@@ -1257,6 +1262,7 @@ case $cpu-$vendor in
 			| x86 | x86_64 | xc16x | xgate | xps100 \
 			| xstormy16 | xtensa* \
 			| ymp \
+			| gp8300 \
 			| z8k | z80)
 				;;
 
@@ -1548,6 +1554,9 @@ case $cpu-$vendor in
 		os=riscix1.2
 		;;
 	arm*-rebel)
+		os=linux
+		;;
+	polaris-* | gp*-gpt | *-gpt)
 		os=linux
 		;;
 	arm*-semi)

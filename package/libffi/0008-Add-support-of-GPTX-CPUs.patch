@@ -1,47 +1,37 @@
-diff -Nura output/build/libffi-3.2.1-old/configure.ac output/build/libffi-3.2.1/configure.ac
---- a/configure.ac	2019-02-22 12:37:16.756484336 +0800
-+++ b/configure.ac	2019-02-22 12:38:13.322483196 +0800
-@@ -118,6 +118,11 @@
-   frv-*-*)
- 	TARGET=FRV; TARGETDIR=frv
+--- libffi-3.3/Makefile.am	2020-03-23 20:08:19.351379145 +0800
++++ libffi-3.3-back/Makefile.am	2020-03-23 20:05:15.397732729 +0800
+@@ -53,6 +53,7 @@
+ 	src/bfin/ffitarget.h						\
+ 	src/cris/ffitarget.h						\
+ 	src/frv/ffitarget.h						\
++	src/gptx/ffitarget.h						\
+ 	src/ia64/ffitarget.h src/ia64/ia64_flags.h			\
+ 	src/m32r/ffitarget.h						\
+ 	src/m68k/ffitarget.h						\
+@@ -82,6 +83,7 @@
+ 	src/arm/sysv.S src/arm/ffi.c src/arm/sysv_msvc_arm32.S \
+ 	src/avr32/ffi.c src/avr32/sysv.S src/bfin/ffi.c	\
+ 	src/bfin/sysv.S src/cris/ffi.c src/cris/sysv.S src/frv/ffi.c \
++	src/gptx/ffi.c src/gptx/sysv.S \
+ 	src/frv/eabi.S src/ia64/ffi.c src/ia64/unix.S src/m32r/ffi.c \
+ 	src/m32r/sysv.S src/m68k/ffi.c src/m68k/sysv.S src/m88k/ffi.c \
+ 	src/m88k/obsd.S src/metag/ffi.c src/metag/sysv.S \
+
+--- libffi-3.3/configure.host	2019-11-23 23:24:58.000000000 +0800
++++ libffi-3.3-back/configure.host	2020-03-23 20:06:44.442697048 +0800
+@@ -58,6 +58,11 @@
+ 	SOURCES="ffi.c eabi.S"
  	;;
-+  
+ 
 +  polaris-gpt-*-* |  gptx-*-*)
 +	TARGET=GPTX; TARGETDIR=gptx
 +	SOURCES="ffi.c sysv.S"
 +	;;
- 
++	
    hppa*-*-linux* | parisc*-*-linux* | hppa*-*-openbsd*)
  	TARGET=PA_LINUX; TARGETDIR=pa
-@@ -308,6 +313,7 @@
- AM_CONDITIONAL(X86_DARWIN32, test x$TARGET = xX86_DARWIN && test $ac_cv_sizeof_size_t = 4)
- AM_CONDITIONAL(X86_DARWIN64, test x$TARGET = xX86_DARWIN && test $ac_cv_sizeof_size_t = 8)
- AM_CONDITIONAL(ALPHA, test x$TARGET = xALPHA)
-+AM_CONDITIONAL(GPTX, test x$TARGET = xGPTX)
- AM_CONDITIONAL(IA64, test x$TARGET = xIA64)
- AM_CONDITIONAL(M32R, test x$TARGET = xM32R)
- AM_CONDITIONAL(M68K, test x$TARGET = xM68K)
-diff -Nura output/build/libffi-3.2.1-old/Makefile.am output/build/libffi-3.2.1/Makefile.am
---- a/Makefile.am	2019-02-22 12:37:16.956484332 +0800
-+++ b/Makefile.am	2019-02-22 12:38:13.324483196 +0800
-@@ -13,6 +13,7 @@
- 	 src/arc/ffitarget.h src/arm/ffi.c src/arm/sysv.S		\
- 	 src/arm/ffitarget.h src/avr32/ffi.c src/avr32/sysv.S		\
- 	 src/avr32/ffitarget.h src/cris/ffi.c src/cris/sysv.S		\
-+	 src/gptx/ffitarget.h src/gptx/ffi.c src/gptx/sysv.S            \
- 	 src/cris/ffitarget.h src/ia64/ffi.c src/ia64/ffitarget.h	\
- 	 src/ia64/ia64_flags.h src/ia64/unix.S src/mips/ffi.c		\
- 	 src/mips/n32.S src/mips/o32.S src/metag/ffi.c			\
-@@ -149,6 +150,9 @@
- if ALPHA
- nodist_libffi_la_SOURCES += src/alpha/ffi.c src/alpha/osf.S
- endif
-+if GPTX
-+nodist_libffi_la_SOURCES += src/gptx/ffi.c src/gptx/sysv.S
-+endif
- if IA64
- nodist_libffi_la_SOURCES += src/ia64/ffi.c src/ia64/unix.S
- endif
+ 	SOURCES="ffi.c linux.S"
+
 diff -Nura output/build/libffi-3.2.1-old/src/gptx/ffi.c output/build/libffi-3.2.1/src/gptx/ffi.c
 --- a/src/gptx/ffi.c	1970-01-01 08:00:00.000000000 +0800
 +++ b/src/gptx/ffi.c	2019-02-21 17:38:06.000000000 +0800
