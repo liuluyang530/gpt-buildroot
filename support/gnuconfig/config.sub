@@ -678,7 +678,7 @@ case $basic_machine in
 		vendor=apple
 		;;
 	gpt* | polaris-gpt | polaris | chase-gpt | chase)
-		cpu=gp8300
+		cpu=polaris
 		vendor=gpt
 		;;
 
@@ -1262,7 +1262,7 @@ case $cpu-$vendor in
 			| x86 | x86_64 | xc16x | xgate | xps100 \
 			| xstormy16 | xtensa* \
 			| ymp \
-			| gp8300 \
+			| polaris \
 			| z8k | z80)
 				;;
 
