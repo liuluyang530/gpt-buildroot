@@ -318,6 +318,12 @@ config BR2_PACKAGE_LINUX_FIRMWARE_RTL_88XX
 	help
 	  Realtek rtl8821ae
 
+config BR2_PACKAGE_LINUX_FIRMWARE_RTL_RTW88
+	bool "Realtek rtw88"
+	help
+	  Firmware images supported by Realtek's wireless
+	  driver rtw88.
+
 config BR2_PACKAGE_LINUX_FIRMWARE_REDPINE_RS9113
 	bool "Redpine rs9113"
 	help
@@ -366,6 +372,13 @@ config BR2_PACKAGE_LINUX_FIRMWARE_INTEL_E100
 	help
 	  Firmware files for Intel 825xx handled by driver e100
 	  (e100)
+
+config BR2_PACKAGE_LINUX_FIRMWARE_MICROCHIP_VSC85XX_PHY
+	bool "Microchip VSC85xx PHYs"
+	help
+	  Firmware files for Microchip/Microsemi VSC85xx networking
+	  PHYs (VSC8504, VSC8552, VSC8572, VSC8574, VSC856X, VSC8575,
+	  VSC8582 and VSC8584)
 
 config BR2_PACKAGE_LINUX_FIRMWARE_QLOGIC_4X
 	bool "QLogic FastLinQ 4xxxx"

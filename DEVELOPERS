@@ -31,12 +31,14 @@ F:	package/audit/
 F:	package/busybox/
 F:	package/checkpolicy/
 F:	package/cppdb/
+F:	package/gobject-introspection/
 F:	package/gstreamer1/gstreamer1/
 F:	package/gstreamer1/gstreamer1-mm/
 F:	package/gstreamer1/gst1-plugins-bad/
 F:	package/gstreamer1/gst1-plugins-base/
 F:	package/gstreamer1/gst1-plugins-good/
 F:	package/gstreamer1/gst1-plugins-ugly/
+F:	package/gstreamer1/gst1-python/
 F:	package/gstreamer1/gst1-vaapi/
 F:	package/imx-usb-loader/
 F:	package/janus-gateway/
@@ -53,6 +55,7 @@ F:	package/openjdk/
 F:	package/openjdk-bin/
 F:	package/php/
 F:	package/policycoreutils/
+F:	package/prelink-cross/
 F:	package/polkit/
 F:	package/python3/
 F:	package/python-aioredis/
@@ -63,6 +66,7 @@ F:	package/python-daphne/
 F:	package/python-django-enumfields/
 F:	package/python-flask-sqlalchemy/
 F:	package/python-gitdb2/
+F:	package/python-gobject/
 F:	package/python-lockfile/
 F:	package/python-mutagen/
 F:	package/python-nested-dict/
@@ -81,6 +85,7 @@ F:	package/setools/
 F:	package/sngrep/
 F:	package/spidermonkey/
 F:	package/systemd/
+F:	support/testing/tests/package/test_gst1_python.py
 F:	support/testing/tests/package/test_python_gobject.py
 
 N:	Adam Heinrich <adam@adamh.cz>
@@ -128,6 +133,9 @@ F:	package/minimodem/
 
 N:	Alexander Lukichev <alexander.lukichev@gmail.com>
 F:	package/openpgm/
+
+N:	Alexander Mukhin <alexander.i.mukhin@gmail.com>
+F:	package/tinyproxy/
 
 N:	Alexander Sverdlin <alexander.sverdlin@gmail.com>
 F:	package/mini-snmpd/
@@ -272,6 +280,8 @@ F:	package/lua-ev/
 F:	package/orbit/
 
 N:	Bartosz Bilas <b.bilas@grinn-global.com>
+F:	board/stmicroelectronics/stm32mp157a-dk1/
+F:	configs/stm32mp157a_dk1_defconfig
 F:	package/python-esptool/
 F:	package/python-pyaes/
 F:	package/qt5/qt5scxml/
@@ -460,6 +470,7 @@ F:	package/x264/
 F:	package/x265/
 F:	package/ytree/
 F:	package/znc/
+F:	support/testing/tests/package/test_perl_html_parser.py
 
 N:	Biagio Montaruli <biagio.hkr@gmail.com>
 F:	board/acmesystems/
@@ -503,6 +514,7 @@ F:	package/skeleton-init-systemd/
 F:	package/skeleton-init-sysv/
 F:	package/skeleton/
 F:	package/sysvinit/
+F:	package/udev-gentoo-scripts/
 F:	package/util-linux/
 F:	package/tpm2-abrmd/
 F:	package/tpm2-tools/
@@ -823,6 +835,9 @@ F:	package/libmaxminddb/
 F:	package/openzwave/
 
 N:	Fabrice Fontaine <fontaine.fabrice@gmail.com>
+F:	package/bearssl/
+F:	package/belle-sip/
+F:	package/belr/
 F:	package/boinc/
 F:	package/cairo/
 F:	package/duktape/
@@ -894,6 +909,10 @@ F:	package/tinycbor/
 F:	package/tinydtls/
 F:	package/tinymembench/
 F:	package/whois/
+
+N:	Fabrice Goucem <fabrice.goucem@oss.nxp.com>
+F:	board/freescale/imx6ullevk/
+F:	configs/freescale_imx6ullevk_defconfig
 
 N:	Falco Hyfing <hyfinglists@gmail.com>
 F:	package/python-pymodbus/
@@ -968,6 +987,9 @@ F:	package/qt5/qt5virtualkeyboard/
 F:	package/qt5/qt5webengine/
 F:	package/qt5/qt5webkit/
 F:	package/qt5/qt5webkit-examples/
+
+N:	Gao Xiang <hsiangkao@aol.com>
+F:	package/erofs-utils/
 
 N:	Gary Bisson <bisson.gary@gmail.com>
 F:	board/boundarydevices/
@@ -1167,6 +1189,7 @@ F:	package/python-async-lru/
 F:	package/python-async-timeout/
 F:	package/python-brotli/
 F:	package/python-cchardet/
+F:	package/python-flatbuffers/
 F:	package/python-frozenlist/
 F:	package/python-janus/
 F:	package/python-logstash/
@@ -1211,12 +1234,17 @@ F:	package/zynq-boot-bin/
 
 N:	Jared Bents <jared.bents@rockwellcollins.com>
 F:	package/davici/
+F:	package/python-filelock/
+F:	package/python-pysftp/
 
 N:	Jarkko Sakkinen <jarkko.sakkinen@intel.com>
 F:	package/quota/
 
 N:	Jason Pruitt <jrspruitt@gmail.com>
 F:	package/librtlsdr/
+
+N:	Jean Burgat <jeanburgat33@gmail.com>
+F:	package/openfpgaloader/
 
 N:	Jens Kleintje <scooby22@web.de>
 F:	package/gcnano-binaries/
@@ -1243,6 +1271,10 @@ F:	package/strongswan/
 F:	package/wmctrl/
 F:	package/x11r7/xdriver_xf86-video-imx/
 F:	package/x11r7/xdriver_xf86-video-imx-viv/
+
+N:	Jianhui Zhao <zhaojh329@gmail.com>
+F:	package/libuwsc/
+F:	package/rtty/
 
 N:	Joao Pinto <jpinto@synopsys.com>
 F:	board/synopsys/vdk/
@@ -1290,6 +1322,7 @@ F:	package/erlang-p1-yaml/
 F:	package/erlang-p1-yconf/
 F:	package/erlang-p1-zlib/
 F:	package/nginx-dav-ext/
+F:	package/vuejs/
 
 N:	John Stile <johns@msli.com>
 F:	package/dhcpcd/
@@ -1508,6 +1541,11 @@ F:	package/python-simplejson/
 F:	package/python-versiontools/
 F:	package/wilc1000-firmware/
 
+N:	Maeva Manuel <maeva.manuel@oss.nxp.com>
+F:	board/freescale/imx8qmmek/
+F:	configs/freescale_imx8qmmek_defconfig
+F:	package/freescale-imx/imx-seco/
+
 N:	Mahyar Koshkouei <mahyar.koshkouei@gmail.com>
 F:	package/ffmpeg/
 F:	package/mpv/
@@ -1536,8 +1574,10 @@ F:	package/lua-flu/
 F:	package/lua-stdlib/
 F:	package/luaossl/
 F:	package/murata-cyw-fw/
+F:	package/netdata/
 F:	package/rs485conf/
 F:	package/turbolua/
+F:	support/testing/tests/package/test_netdata.py
 
 N:	Marcus Folkesson <marcus.folkesson@gmail.com>
 F:	package/libostree/
@@ -1816,6 +1856,7 @@ F:	package/libgudev/
 N:	Naumann Andreas <ANaumann@ultratronik.de>
 F:	package/evemu/
 F:	package/libevdev/
+F:	package/pkg-qmake.mk
 
 N:	Nicola Di Lieto <nicola.dilieto@gmail.com>
 F:	package/uacme/
@@ -2082,7 +2123,11 @@ F:	package/uhttpd/
 F:	package/ustream-ssl/
 
 N:	Refik Tuzakli <tuzakli.refik@gmail.com>
+F:	package/freescale-imx/
 F:	package/paho-mqtt-cpp/
+
+N:	Raphaël Mélotte <raphael.melotte@essensium.com>
+F:	package/jbig2dec/
 
 N:	Rémi Rérolle <remi.rerolle@gmail.com>
 F:	package/libfreeimage/
@@ -2349,6 +2394,11 @@ N:	Steven Noonan <steven@uplinklabs.net>
 F:	package/hwloc/
 F:	package/powertop/
 
+N:	Suniel Mahesh <sunil@amarulasolutions.com>
+F:	board/firefly/
+F:	configs/roc_pc_rk3399_defconfig
+F:	package/arm-gnu-a-toolchain/
+
 N:	Sven Haardiek <sven.haardiek@iotec-gmbh.de>
 F:	package/lcdproc/
 F:	package/python-influxdb/
@@ -2378,21 +2428,32 @@ F:	package/civetweb/
 N:	Thomas De Schampheleire <thomas.de_schampheleire@nokia.com>
 F:	docs/manual/
 F:	package/cereal/
+F:	package/chartjs/
 F:	package/libtelnet/
 F:	package/opkg-utils/
 F:	package/perl-convert-asn1/
 F:	package/perl-crypt-blowfish/
 F:	package/perl-crypt-cbc/
 F:	package/perl-crypt-openssl-aes/
+F:	package/perl-i18n/
+F:	package/perl-locale-maketext-lexicon/
+F:	package/perl-lwp-protocol-https/
 F:	package/perl-math-prime-util/
 F:	package/perl-mime-base64-urlsafe/
 F:	package/perl-mojolicious-plugin-authentication/
+F:	package/perl-mojolicious-plugin-authorization/
+F:	package/perl-mojolicious-plugin-cspheader/
+F:	package/perl-mojolicious-plugin-i18n/
+F:	package/perl-mojolicious-plugin-securityheader/
+F:	package/perl-mozilla-ca/
 F:	package/perl-net-snmp/
 F:	package/perl-net-ssh2/
 F:	package/perl-net-telnet/
+F:	package/perl-path-class/
 F:	package/pigz/
 F:	package/xenomai/
 F:	support/scripts/size-stats
+F:	support/testing/tests/package/test_perl_lwp_protocol_https.py
 F:	utils/size-stats-compare
 F:	toolchain/
 
@@ -2547,7 +2608,7 @@ F:	board/friendlyarm/nanopi-neo/
 F:	configs/nanopi_neo_defconfig
 F:	fs/squashfs/
 F:	package/asterisk/
-F:	package/cegui06/
+F:	package/cegui/
 F:	package/dahdi-linux/
 F:	package/dahdi-tools/
 F:	package/dtc/
@@ -2558,6 +2619,7 @@ F:	package/keyutils/
 F:	package/libbsd/
 F:	package/libedit/
 F:	package/libgsm/
+F:	package/libiberty/
 F:	package/libinput/
 F:	package/libiscsi/
 F:	package/libpri/

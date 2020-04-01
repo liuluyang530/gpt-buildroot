@@ -127,6 +127,8 @@ LINUX_POST_EXTRACT_HOOKS += LINUX_XTENSA_OVERLAY_EXTRACT
 LINUX_EXTRA_DOWNLOADS += $(ARCH_XTENSA_OVERLAY_URL)
 endif
 
+# We don't want to run depmod after installing the kernel. It's done in a
+# target-finalize hook, to encompass modules installed by packages.
 LINUX_MAKE_FLAGS = \
 	HOSTCC="$(HOSTCC) $(HOST_CFLAGS) $(HOST_LDFLAGS)" \
 	ARCH=$(KERNEL_ARCH) \
@@ -406,6 +408,14 @@ define LINUX_KCONFIG_FIXUP_CMDS
 		$(call KCONFIG_ENABLE_OPT,CONFIG_FB,$(@D)/.config)
 		$(call KCONFIG_ENABLE_OPT,CONFIG_LOGO,$(@D)/.config)
 		$(call KCONFIG_ENABLE_OPT,CONFIG_LOGO_LINUX_CLUT224,$(@D)/.config))
+	$(if $(BR2_PACKAGE_LIBSELINUX),
+		$(call KCONFIG_ENABLE_OPT,CONFIG_AUDIT,$(@D)/.config)
+		$(call KCONFIG_ENABLE_OPT,CONFIG_DEFAULT_SECURITY_SELINUX,$(@D)/.config)
+		$(call KCONFIG_ENABLE_OPT,CONFIG_INET,$(@D)/.config)
+		$(call KCONFIG_ENABLE_OPT,CONFIG_NET,$(@D)/.config)
+		$(call KCONFIG_ENABLE_OPT,CONFIG_SECURITY,$(@D)/.config)
+		$(call KCONFIG_ENABLE_OPT,CONFIG_SECURITY_NETWORK,$(@D)/.config)
+		$(call KCONFIG_ENABLE_OPT,CONFIG_SECURITY_SELINUX,$(@D)/.config))
 endef
 
 ifeq ($(BR2_LINUX_KERNEL_DTS_SUPPORT),y)
@@ -525,6 +535,15 @@ define LINUX_INSTALL_TARGET_CMDS
 	fi
 	$(LINUX_INSTALL_HOST_TOOLS)
 endef
+
+# Run depmod in a target-finalize hook, to encompass modules installed by
+# packages.
+define LINUX_RUN_DEPMOD
+	if grep -q "CONFIG_MODULES=y" $(LINUX_DIR)/.config; then \
+		$(HOST_DIR)/sbin/depmod -a -b $(TARGET_DIR) $(LINUX_VERSION_PROBED); \
+	fi
+endef
+LINUX_TARGET_FINALIZE_HOOKS += LINUX_RUN_DEPMOD
 
 # Include all our extensions.
 #
